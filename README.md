@@ -1,5 +1,5 @@
 # CSCI466-group-project
-Design and develop and application using the tools covered in the class.
+Design and develop an application using the tools covered in the class.
 
 Design Database Schema / ER Diagram & Convert to Relations: Milo Zak (Z1917365)
 -
