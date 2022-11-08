@@ -1,6 +1,9 @@
 <?php
     // drawTable Function
     function drawTable($rows) {
+        // Add check for functional $rows?
+        // ___
+        
         echo "<table border=3 cellspacing=1> <tr>";
         
         // Print Table Header
@@ -19,5 +22,4 @@
         }
         echo "</table>";
     }
-
 ?>
