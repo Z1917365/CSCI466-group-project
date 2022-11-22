@@ -9,6 +9,8 @@ Design Database Schema / ER Diagram & Convert to Relations: Milo Zak (Z1917365)
     Unadded, but it is a description of the entities, attributes, and relationships within the ER diagram
 - Relational_schema.pdf
     It includes the relationalschema in 3NF to create all of the data for the tables being created later on
+- Product and Cust info.pdf
+    This includes information on the products and information which is in the SQL
     
 Translating Relations into SQL DDL: Isaiah Jones (Z1865213)
 -
