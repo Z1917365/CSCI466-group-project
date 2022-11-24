@@ -14,7 +14,7 @@ Design Database Schema / ER Diagram & Convert to Relations: Milo Zak (Z1917365)
     
 Translating Relations into SQL DDL: Isaiah Jones (Z1865213)
 -
-    //
+    // Added the SQL. Let me know if you have any questions or trouble. 
 
 Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 -
