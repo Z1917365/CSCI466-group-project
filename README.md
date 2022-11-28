@@ -27,6 +27,6 @@ Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 - assignGroup_Emp.php:
     begining of employee section
 - assignGroup_lib.php:
-    PHP function storage, currently just drawTable
+    PHP function storage
 - secrets.php:
     my secret access to class MariaDB
