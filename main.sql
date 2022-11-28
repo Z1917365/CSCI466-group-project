@@ -24,7 +24,7 @@ create table Inventory
     Name varchar (50) NOT NULL
 
 );
-
+   
 
 create table Cart
 (
