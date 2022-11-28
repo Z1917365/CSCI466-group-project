@@ -4,17 +4,14 @@ create table User
 (
     Username varchar(50) UNIQUE Primary Key,
     Password varchar(50) NOT NULL,
-    Iscust int (11) NOT NULL,
-    Isemp int (11) NOT NULL,
-    Email varchar(50) NOT NULL,
-    Phone varchar(20) NOT NULL,
     Address varchar(100) NOT NULL,
-    CCV varchar (10) NOT NULL,
+    CCV int (11) NOT NULL,
     CC_Num varchar (20) NOT NULL,
-    CC_Exp varchar (20) NOT NULL
- /* For Iscust and Isemp -> 1 for (true) 0 for (false)  */
+    CC_Exp varchar (50) NOT NULL,
+    Iscust BIT (1) NOT NULL,
+    Isemp BIT (1) NOT NULL 
+ /* BIT is like a boolean datatype, 1 (for TRUE) 0 (for FALSE) */
 );
-
 
 create table Inventory
 (
@@ -24,17 +21,17 @@ create table Inventory
     Name varchar (50) NOT NULL
 
 );
-   
+
 
 create table Cart
 (
     Order_ID int(11) AUTO_INCREMENT PRIMARY KEY,
     Quantity int (11) NOT NULL,
-    Total int(11) NOT NULL,
+    Total int(11) DEFAULT 0,
     Product_ID int (11) NOT NULL,
 
     FOREIGN KEY (Product_ID) References Inventory(Product_ID)
-); 
+);
 
 
 
@@ -53,6 +50,12 @@ PRIMARY KEY (ORDER_ID),
 FOREIGN KEY (Order_ID) References Cart (Order_ID),
 FOREIGN KEY (Username) References User (Username)
 
+);
+
+create table Pics
+(
+    Product_ID int (11) AUTO_INCREMENT PRIMARY KEY,
+    Img_Source varchar(50) NOT NULL
 );
 
 
@@ -80,20 +83,49 @@ INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (19,750,
 INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (20, 2000, 24, 'Otterhound');
 
 
-/* Insert into Cust */
+/* Insert into User */
+
+INSERT INTO User (Username, Password, Address, CCV, CC_Num, CC_Exp, Iscust, Isemp) 
+          VALUES ('TEST','admin123', 'Nowhere Ave', 111, 'RIP', 'Never', 0, 1);
+
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0, '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('ruffScream98', 'NotB33ff', 1, 0, '13197 Marybrook dr. Plainfield Il, 60435', '123','4567890123456789', '08/2029');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('tinydogscream', 'NotL@mb1', 1, 0, '701 W Lincoln Hwy, Dekalb, IL, 60115', '978', '4647632857120985', '08/2023');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGoingToINC', 'LetYouDown', 1, 0, '901 Lucinda Ave Stel, Dekalb, IL, 60115', '239', '7774635212348954', '02/26');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('Hellodog', 'ItisME',0, 1, '901 Normal Ave Stel, Dekalb, IL, 60115', '339', '8584635212348987', '01/27');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('Goodbyedog', 'ItisnotME',0, 1, '802 Annie Gliddeb Ave Stel, Dekalb, IL, 60115', '545', '8554525212348987', '09/23');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('Barkybark', 'BarkBarky',0, 1, '532 Annie Glidden Dr Backers, Dekalb, IL, 60115', '631', '8554525212376210', '07/22');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('GopackGo', 'GobearsGO',0, 1, '456 Lucinda Dr, Dekalb, IL, 60115', '542', '8554525215453000', '10/27');
+INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('GobearsGo', 'packerdog',0, 1, '650 Normal Dr, Dekalb, IL, 60115', '490', '8554525243434000', '11/29');
 
 
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0, 'bark@email.com', '5553832145', '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('ruffScream98', 'NotB33ff', 1, 0, 'ruff@email.com','5552345127', '13197 Marybrook dr. Plainfield Il, 60435', '123','4567890123456789', '08/2029');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('tinydogscream', 'NotL@mb1', 1, 0, 'tinydog@email.com', '5552341267', '701 W Lincoln Hwy, Dekalb, IL, 60115', '978', '4647632857120985', '08/2023');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, 'nevergonna@email.com', '5556463700', '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGoingToINC', 'LetYouDown', 1, 0, 'nevergoing@email.com', '5554444321', '901 Lucinda Ave Stel, Dekalb, IL, 60115', '239', '7774635212348954', '02/26');
+/* Insert into Pics */
 
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('Hellodog', 'ItisME',0, 1, 'Hello@email.com', '5554444332', '901 Normal Ave Stel, Dekalb, IL, 60115', '339', '8584635212348987', '01/27');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('Goodbyedog', 'ItisnotME',0, 1, 'Goodbye@email.com', '5557654332', '802 Annie Gliddeb Ave Stel, Dekalb, IL, 60115', '545', '8554525212348987', '09/23');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('Barkybark', 'BarkBarky',0, 1, 'Barkybark43@email.com', '5557655490', '532 Annie Glidden Dr Backers, Dekalb, IL, 60115', '631', '8554525212376210', '07/22');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('GopackGo', 'GobearsGO',0, 1, 'Gopackgo@email.com', '5557643421', '456 Lucinda Dr, Dekalb, IL, 60115', '542', '8554525215453000', '10/27');
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('GobearsGo', 'packerdog',0, 1, 'packerdog.com', '5554344301', '650 Normal Dr, Dekalb, IL, 60115', '490', '8554525243434000', '11/29');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/IquceOo.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/mtghjK6.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/GB1FWdY.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/d7U4t9q.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/nK3qGO2.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/x3cJzm1.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/z8iVyQD.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/QQ2sPaY.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/rtCjFP8.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/TtNfyUW.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/alMd66I.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/VeZvygl.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/3xC5jMI.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/woo4pFQ.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/A1FnRBu.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/mouKsV6.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/xxgLe1n.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/3hZlrqZ.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/iY1auEX.jpg');
+INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/tjLs2mA.jpg');
+
+
+
+
 
 
 
