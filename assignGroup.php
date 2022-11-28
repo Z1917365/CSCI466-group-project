@@ -16,10 +16,10 @@
             include ("secrets.php");
 
             // Button to Switch to Employee Site
-            echo "<table border=25> <tr><th>",
+            echo "<table width=100%> <tr><th style=\"width:43%\"></th><th> <table border=25> <tr><th>",
                  "<form action=\"assignGroup_Emp.php\" method=\"POST\">",
                  "<input type=\"submit\" name=\"submitEmp\" value=\"EMPLOYEE PORTAL\"/> </form>",
-                 "</th></tr></table>";
+                 "</th></tr></table> </th></tr> </table>";
 
             /* Pretty Source Code */ echo "\n\n";
 
@@ -35,6 +35,10 @@
             }
 
             // Shopping Cart
+            /*if (isset($_POST["ordered"])) {
+                // Submit Cart as Orders, if routed from Checkout
+                orderUp($pdo);
+            }*/
             echo "<h3>Shopping Cart:</h3>",
                  "<table border=10 height=10% width=100%> <tr>"; 
             cartSelect($pdo);   // Display & Submit Cart Selections

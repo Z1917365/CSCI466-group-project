@@ -1,5 +1,6 @@
 <?php
     // drawTable Function
+    // Display Tables to assist in Testing
     function drawTable($rows) {
         try {
             echo "<table border=3 cellspacing=1> <tr>";
@@ -31,6 +32,7 @@
     }
 
     // drawDogs Function
+    // Simplify main, assist in displaying table of Dog Selections
     function drawDogs($pdo) {
 
         try {
@@ -63,7 +65,7 @@
                 }
                 // Name Print
                 $name = $rowIn[$rowInSize];
-                echo "<input type=\"submit\" name=\"Dog" . strval($picIndex + 1), "\"value=\"", $name, "\"/> <br/> </th>";
+                echo "<input type=\"submit\" name=\"Dog" . strval($picIndex + 1), "\"value=\"", $name, "\"/> <br/> </th>";  // Create Buttons with Dog+Product_ID for name
                 $picIndex++;
 
                 // Newline Control
@@ -88,6 +90,7 @@
     }
 
     // drawShop Function
+    // Display the current contents of the Shopping Cart
     function drawShop($pdo) {
         try {
             // Access Cart
@@ -128,6 +131,7 @@
                     $total += $rowCart[2];
 
                     echo "</th>";   // Sub-Table Cont. Cont.
+                    // Newline Control
                     $subCount++;
                     if ($subCount > 3) {
                         echo "</tr> <tr>";
@@ -144,7 +148,7 @@
                 echo "TOTAL COST IN CART: $", $total, "<br/>",
                      "<form action=\"https://students.cs.niu.edu/~z1838505/assignGroup_Checkout.php\" method=\"POST\"> ";
                      
-                if (!(isset($_POST["checkout"]))) {
+                if (!(isset($_POST["checkout"]))) { // Check for this button pressed, stops display during checkout
                     echo "<input type=\"submit\" name=\"checkout\" value=\"CHECKOUT\"/> <br/>";
                 }
                 
@@ -164,6 +168,7 @@
     }
 
     // cartSelect Function
+    // Simplifies main, displays product selection for confirmation
     function cartSelect($pdo) {
         try {
             // Access Inventory
@@ -180,6 +185,7 @@
                     echo "<th style=\"width:15%\"> <img src=", $rowsPic[$rowIn[0] - 1][1], "/> </th>",
                          "<th style=\"width:10%\">"; 
                          
+                    // Selection for amount & secondary confirmation
                     if ($rowIn[2] > 0) {
                         echo "<form method=\"POST\">",
                              "<input type=\"number\" name=\"quantSelect\" value=\"1\" min=\"1\" max=\"", $rowIn[2], "\"/> :: ", $rowIn[2], "<br/> <br/>",
@@ -210,4 +216,23 @@
             echo "SHOPPING CART SELECTION ERROR: ", $e->getMessage(), "\n";
         }
     }
+
+    // orderUp Function
+    // Transfer current Cart to Orders
+    /*function orderUp($pdo) {
+        try {
+            // Access Cart
+            $rs = $pdo->query("SELECT * FROM Cart;");              // Select 'Cart' from Maria
+            $rowsCart = $rs->fetchAll(PDO::FETCH_NUM);  // By Index
+            // Access Orders
+            $rs = $pdo->query("SELECT * FROM Orders;");              // Select 'Orders' from Maria
+            $rowsOrd = $rs->fetchAll(PDO::FETCH_NUM);   // By Index
+
+            // Loop Through Orders & WTF
+            // WTF
+        }
+        catch (Exception $e) {
+            echo "ORDER TRANSFER ERROR: ", $e->getMessage(), "\n";
+        }
+    }*/
 ?>
