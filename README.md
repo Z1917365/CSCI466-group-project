@@ -20,9 +20,13 @@ Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 -
 - https://students.cs.niu.edu/~z1838505/assignGroup_Starter.php
     my class html/php repo, starter webpage to reset SQLs for testing
+- assignGroup.php:
+    the actual webpage, "main"
+- assignGroup_Checkout.php:
+    Shopping Cart confirmation page
+- assignGroup_Emp.php:
+    begining of employee section
 - assignGroup_lib.php:
     PHP function storage, currently just drawTable
 - secrets.php:
     my secret access to class MariaDB
-- assignGroup.php:
-    the actual webpage, "main"
