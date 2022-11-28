@@ -18,8 +18,8 @@ Translating Relations into SQL DDL: Isaiah Jones (Z1865213)
 
 Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 -
-- https://students.cs.niu.edu/~z1838505/
-    my class html/php repo, ignore remaining assign9 Stuff
+- https://students.cs.niu.edu/~z1838505/assignGroup_Starter.php
+    my class html/php repo, starter webpage to reset SQLs for testing
 - assignGroup_lib.php:
     PHP function storage, currently just drawTable
 - secrets.php:
