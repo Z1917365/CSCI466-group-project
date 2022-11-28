@@ -89,6 +89,11 @@ INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV,
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, 'nevergonna@email.com', '5556463700', '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGoingToINC', 'LetYouDown', 1, 0, 'nevergoing@email.com', '5554444321', '901 Lucinda Ave Stel, Dekalb, IL, 60115', '239', '7774635212348954', '02/26');
 
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('Hellodog', 'ItisME',0, 1, 'Hello@email.com', '5554444332', '901 Normal Ave Stel, Dekalb, IL, 60115', '339', '8584635212348987', '01/27');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('Goodbyedog', 'ItisnotME',0, 1, 'Goodbye@email.com', '5557654332', '802 Annie Gliddeb Ave Stel, Dekalb, IL, 60115', '545', '8554525212348987', '09/23');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('Barkybark', 'BarkBarky',0, 1, 'Barkybark43@email.com', '5557655490', '532 Annie Glidden Dr Backers, Dekalb, IL, 60115', '631', '8554525212376210', '07/22');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('GopackGo', 'GobearsGO',0, 1, 'Gopackgo@email.com', '5557643421', '456 Lucinda Dr, Dekalb, IL, 60115', '542', '8554525215453000', '10/27');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('GobearsGo', 'packerdog',0, 1, 'packerdog.com', '5554344301', '650 Normal Dr, Dekalb, IL, 60115', '490', '8554525243434000', '11/29');
 
 
 
