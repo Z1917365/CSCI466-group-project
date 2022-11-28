@@ -14,11 +14,15 @@ Design Database Schema / ER Diagram & Convert to Relations: Milo Zak (Z1917365)
     
 Translating Relations into SQL DDL: Isaiah Jones (Z1865213)
 -
-    // Added the SQL. Let me know if you have any questions or trouble. 
+- Added the SQL. Let me know if you have any questions or trouble. 
 
 Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 -
+- https://students.cs.niu.edu/~z1838505/
+    my class html/php repo, ignore remaining assign9 Stuff
 - assignGroup_lib.php:
     PHP function storage, currently just drawTable
 - secrets.php:
-    idk how we wanna do this (this is a public project right now) but eventually I'll need access to the MariaDB of whoever builds the tables
+    my secret access to class MariaDB
+- assignGroup.php:
+    the actual webpage, "main"
