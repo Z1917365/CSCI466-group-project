@@ -4,42 +4,17 @@ create table User
 (
     Username varchar(50) UNIQUE Primary Key,
     Password varchar(50) NOT NULL,
-    Iscust BIT (1) NOT NULL,
-    Isemp BIT (1) NOT NULL 
- /* BIT is like a boolean datatype, 1 (for TRUE) 0 (for FALSE) */
-);
-
-create table Cust 
-(
-
-    Username varchar(50) UNIQUE,
+    Iscust int (11) NOT NULL,
+    Isemp int (11) NOT NULL,
     Email varchar(50) NOT NULL,
     Phone varchar(20) NOT NULL,
     Address varchar(100) NOT NULL,
-    CCV int (11) NOT NULL,
-    CC_Num int (11) NOT NULL,
-    CC_Exp varchar (50) NOT NULL,
-
-
-    Primary Key (Username),
-    Foreign Key (Username) References User(Username)
+    CCV varchar (10) NOT NULL,
+    CC_Num varchar (20) NOT NULL,
+    CC_Exp varchar (20) NOT NULL
+ /* For Iscust and Isemp -> 1 for (true) 0 for (false)  */
 );
 
-
-
-create table Emp 
-(
-
-Username varchar(50) UNIQUE,
-Email varchar(50) NOT NULL,
-Address varchar(100) NOT NULL,
-Phone varchar(20) NOT NULL,
-
-Primary Key (Username),
-Foreign Key (Username) References User(Username)
-
-
-);
 
 create table Inventory
 (
@@ -59,7 +34,7 @@ create table Cart
     Product_ID int (11) NOT NULL,
 
     FOREIGN KEY (Product_ID) References Inventory(Product_ID)
-);
+); 
 
 
 
@@ -108,11 +83,11 @@ INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (20, 200
 /* Insert into Cust */
 
 
-INSERT INTO User (Username, Password, Iscust, Isemp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0);
-
-
-
-
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0, 'bark@email.com', '5553832145', '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('ruffScream98', 'NotB33ff', 1, 0, 'ruff@email.com','5552345127', '13197 Marybrook dr. Plainfield Il, 60435', '123','4567890123456789', '08/2029');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('tinydogscream', 'NotL@mb1', 1, 0, 'tinydog@email.com', '5552341267', '701 W Lincoln Hwy, Dekalb, IL, 60115', '978', '4647632857120985', '08/2023');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, 'nevergonna@email.com', '5556463700', '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Phone, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGoingToINC', 'LetYouDown', 1, 0, 'nevergoing@email.com', '5554444321', '901 Lucinda Ave Stel, Dekalb, IL, 60115', '239', '7774635212348954', '02/26');
 
 
 
