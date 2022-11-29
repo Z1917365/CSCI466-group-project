@@ -5,8 +5,9 @@ create table User
     Username varchar(50) UNIQUE Primary Key,
     Password varchar(50) NOT NULL,
     Address varchar(100) NOT NULL,
+    Email varchar(50) NOT NULL,
     CCV int (11) NOT NULL,
-    CC_Num varchar (20) NOT NULL,
+    CC_Num varchar (16) NOT NULL,
     CC_Exp varchar (50) NOT NULL,
     Iscust BIT (1) NOT NULL,
     Isemp BIT (1) NOT NULL 
@@ -19,9 +20,7 @@ create table Inventory
     Price int(11) NOT NULL,
     QuantityinStock int (11) NOT NULL,
     Name varchar (50) NOT NULL
-
 );
-
 
 create table Cart
 (
@@ -33,23 +32,18 @@ create table Cart
     FOREIGN KEY (Product_ID) References Inventory(Product_ID)
 );
 
-
-
-
 create table Orders
 (
+    Order_ID int (11) AUTO_INCREMENT, -- from cart
+    Username varchar(50) UNIQUE, -- from user
+    CCV int (11) NOT NULL,
+    CC_Num int (11) NOT NULL,
+    CC_Exp varchar (50) NOT NULL,
+    Shipping_address varchar(255) NOT NULL,
 
-Order_ID int (11) AUTO_INCREMENT, -- from cart
-Username varchar(50) UNIQUE, -- from user
-CCV int (11) NOT NULL,
-CC_Num int (11) NOT NULL,
-CC_Exp varchar (50) NOT NULL,
-Shipping_address varchar(255) NOT NULL,
-
-PRIMARY KEY (ORDER_ID),
-FOREIGN KEY (Order_ID) References Cart (Order_ID),
-FOREIGN KEY (Username) References User (Username)
-
+    PRIMARY KEY (ORDER_ID),
+    FOREIGN KEY (Order_ID) References Cart (Order_ID),
+    FOREIGN KEY (Username) References User (Username)
 );
 
 create table Pics
@@ -85,19 +79,17 @@ INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (20, 200
 
 /* Insert into User */
 
-INSERT INTO User (Username, Password, Address, CCV, CC_Num, CC_Exp, Iscust, Isemp) 
-          VALUES ('TEST','admin123', 'Nowhere Ave', 111, 'RIP', 'Never', 0, 1);
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0, 'bark@email.com', '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('ruffScream98', 'NotB33ff', 1, 0, 'ruff@email.com', '13197 Marybrook dr. Plainfield Il, 60435', '123','4567890123456789', '08/2029');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('tinydogscream', 'NotL@mb1', 1, 0, 'tinydog@email.com', '701 W Lincoln Hwy, Dekalb, IL, 60115', '978', '4647632857120985', '08/2023');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, 'nevergonna@email.com', '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGoingToINC', 'LetYouDown', 1, 0, 'nevergoing@email.com', '901 Lucinda Ave Stel, Dekalb, IL, 60115', '239', '7774635212348954', '02/26');
 
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0, '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('ruffScream98', 'NotB33ff', 1, 0, '13197 Marybrook dr. Plainfield Il, 60435', '123','4567890123456789', '08/2029');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('tinydogscream', 'NotL@mb1', 1, 0, '701 W Lincoln Hwy, Dekalb, IL, 60115', '978', '4647632857120985', '08/2023');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGoingToINC', 'LetYouDown', 1, 0, '901 Lucinda Ave Stel, Dekalb, IL, 60115', '239', '7774635212348954', '02/26');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('Hellodog', 'ItisME',0, 1, '901 Normal Ave Stel, Dekalb, IL, 60115', '339', '8584635212348987', '01/27');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('Goodbyedog', 'ItisnotME',0, 1, '802 Annie Gliddeb Ave Stel, Dekalb, IL, 60115', '545', '8554525212348987', '09/23');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('Barkybark', 'BarkBarky',0, 1, '532 Annie Glidden Dr Backers, Dekalb, IL, 60115', '631', '8554525212376210', '07/22');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('GopackGo', 'GobearsGO',0, 1, '456 Lucinda Dr, Dekalb, IL, 60115', '542', '8554525215453000', '10/27');
-INSERT INTO User (Username, Password, Iscust, Isemp, Address, CCV, CC_Num, CC_Exp) VALUES ('GobearsGo', 'packerdog',0, 1, '650 Normal Dr, Dekalb, IL, 60115', '490', '8554525243434000', '11/29');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('Hellodog', 'ItisME',0, 1, 'Hello@email.com', '901 Normal Ave Stel, Dekalb, IL, 60115', '339', '8584635212348987', '01/27');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('Goodbyedog', 'ItisnotME',0, 1, 'Goodbye@email.com', '802 Annie Gliddeb Ave Stel, Dekalb, IL, 60115', '545', '8554525212348987', '09/23');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('Barkybark', 'BarkBarky',0, 1, 'Barkybark43@email.com', '532 Annie Glidden Dr Backers, Dekalb, IL, 60115', '631', '8554525212376210', '07/22');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('GopackGo', 'GobearsGO',0, 1, 'Gopackgo@email.com', '456 Lucinda Dr, Dekalb, IL, 60115', '542', '8554525215453000', '10/27');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('GobearsGo', 'packerdog',0, 1, 'packerdog.com', '650 Normal Dr, Dekalb, IL, 60115', '490', '8554525243434000', '11/29');
 
 
 /* Insert into Pics */
