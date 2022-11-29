@@ -16,7 +16,8 @@ create table User
 
 create table Inventory
 (
-    Product_ID int (11) PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+    Product_ID int (11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Username varchar(50) NOT NULL, 
     Price int(11) NOT NULL,
     QuantityinStock int (11) NOT NULL,
     Name varchar (50) NOT NULL
@@ -34,17 +35,14 @@ create table Cart
 
 create table Orders
 (
-    Order_ID int (11) AUTO_INCREMENT, -- from cart
-    Username varchar(50) UNIQUE, -- from user
-    CCV int (11) NOT NULL,
-    CC_Num int (11) NOT NULL,
-    CC_Exp varchar (50) NOT NULL,
-    Shipping_address varchar(255) NOT NULL,
-
-    PRIMARY KEY (ORDER_ID),
-    FOREIGN KEY (Order_ID) References Cart (Order_ID),
-    FOREIGN KEY (Username) References User (Username)
+    Confirm_Num int (11) AUTO_INCREMENT PRIMARY KEY,
+    Is_processed BIT (1) DEFAULT 0,
+    Is_shipped BIT (1) DEFAULT 0,
+    amountPaid varchar(50) NOT NULL,
+    track_order varchar(50) NOT NULL, /* Username..? */
+    add_note varchar(50) NOT NULL /* String = "Quantity : ProductID : " */
 );
+
 
 create table Pics
 (
@@ -55,31 +53,31 @@ create table Pics
 
 /* Insert into Inventory */
 
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (1,650,20,'Akita');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (2,900,30, 'Boxer');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (3,800, 10, 'Cavalier King Charles Spaniel');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (4,1200, 14, 'Yorkshire Terrier');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (5,1400, 45, 'English Bull Dog');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (6,150, 26, 'Samoyed');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (7,250, 32, 'Yorkie Poo');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (8,200, 14, 'Greate Dane');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (9,560, 6, 'Saint Bernard');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (10,550, 8, 'Greate Pyrenees');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (11,650, 17, 'Golden Retriever');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (12,2000, 18, 'Italian Greyhound');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (13,600, 25, 'Keeshond');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (14,1200, 12, 'Mastiff');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (15,850, 51, 'Dachshund');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (16, 2000, 18, 'Tosa');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (17,1350, 16, 'German Shepard');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (18,1500, 39, 'Rottweiler');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (19,750, 35, 'Polish Lowland Sheepdog');
-INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name) VALUES (20, 2000, 24, 'Otterhound');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (1,650,20, 'Akita', 'Hellodog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (2,900,30, 'Boxer', 'Hellodog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (3,800, 10, 'Cavalier King Charles Spaniel', 'Hellodog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (4,1200, 14, 'Yorkshire Terrier', 'Hellodog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (5,1400, 45, 'English Bull Dog', 'Goodbyedog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (6,150, 26, 'Samoyed', 'Goodbyedog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (7,250, 32, 'Yorkie Poo', 'Goodbyedog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (8,200, 14, 'Greate Dane', 'Goodbyedog');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (9,560, 6, 'Saint Bernard', 'Barkybark');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (10,550, 8, 'Greate Pyrenees', 'Barkybark');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (11,650, 17, 'Golden Retriever', 'Barkybark');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (12,2000, 18, 'Italian Greyhound', 'Barkybark');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (13,600, 25, 'Keeshond', 'GopackGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (14,1200, 12, 'Mastiff', 'GopackGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (15,850, 51, 'Dachshund', 'GopackGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (16, 2000, 18, 'Tosa', 'GopackGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (17,1350, 16, 'German Shepard', 'GobearsGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (18,1500, 39, 'Rottweiler', 'GobearsGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (19,750, 35, 'Polish Lowland Sheepdog', 'GobearsGo');
+INSERT INTO Inventory (Product_ID, Price, QuantityinStock, Name, Username) VALUES (20, 2000, 24, 'Otterhound', 'GobearsGo');
 
 
 /* Insert into User */
 
-INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1','NotCh!cken', 1, 0, 'bark@email.com', '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
+INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('BarkB@rk1', 'NotCh!cken', 1, 0, 'bark@email.com', '308 Negra Arroyo Lane Albuquerque, New Mexico', '234', '5678901234567890', '08/2024');
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('ruffScream98', 'NotB33ff', 1, 0, 'ruff@email.com', '13197 Marybrook dr. Plainfield Il, 60435', '123','4567890123456789', '08/2029');
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('tinydogscream', 'NotL@mb1', 1, 0, 'tinydog@email.com', '701 W Lincoln Hwy, Dekalb, IL, 60115', '978', '4647632857120985', '08/2023');
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('NeverGonna', 'GiveYouUp', 1, 0, 'nevergonna@email.com', '1640 Dekalb Ave, Sycamore, IL, 60178', '378', '5384720403958395', '12/2022');
@@ -114,12 +112,4 @@ INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/xxgLe1n.jpg');
 INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/3hZlrqZ.jpg');
 INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/iY1auEX.jpg');
 INSERT INTO Pics (Img_Source) VALUES ('https://i.imgur.com/tjLs2mA.jpg');
-
-
-
-
-
-
-
-
 

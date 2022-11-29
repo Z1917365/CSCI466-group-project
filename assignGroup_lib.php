@@ -1,6 +1,8 @@
 <?php
     // drawTable Function
     // Display Tables to assist in Testing
+        // $rows = Entered Table Column Array
+        // $bord = Border width for table formatting
     function drawTable($rows) {
         try {
             echo "<table border=3 cellspacing=1> <tr>";
@@ -121,7 +123,7 @@
                     // Find Dog Name
                     foreach($rowsIn as $rowIn) {
                         if ($rowCart[3] == $rowIn[0]) {
-                            echo $rowIn[3];
+                            echo $rowIn[4];
                         }
                     }
                     if ($rowCart[1] > 1) {echo "s";}    // Plural Formatting
@@ -148,7 +150,7 @@
                 echo "TOTAL COST IN CART: $", $total, "<br/>",
                      "<form action=\"https://students.cs.niu.edu/~z1838505/assignGroup_Checkout.php\" method=\"POST\"> ";
                      
-                if (!(isset($_POST["checkout"]))) { // Check for this button pressed, stops display during checkout
+                if (!(isset($_POST["checkout"])) && !(isset($_POST["custSelect"]))) { // Stops display during checkout
                     echo "<input type=\"submit\" name=\"checkout\" value=\"CHECKOUT\"/> <br/>";
                 }
                 
@@ -188,20 +190,21 @@
                     // Selection for amount & secondary confirmation
                     if ($rowIn[2] > 0) {
                         echo "<form method=\"POST\">",
-                             "<input type=\"number\" name=\"quantSelect\" value=\"1\" min=\"1\" max=\"", $rowIn[2], "\"/> :: ", $rowIn[2], "<br/> <br/>",
-                             "<input type=\"submit\" name=\"cartSubmit\" value=\"", $rowIn[3], "\"/> <br/> </th>",
+                             "<input type=\"number\" name=\"quantSelect\" value=\"1\" min=\"1\" max=\"", $rowIn[3], "\"/> :: ", $rowIn[3], "<br/> <br/>",
+                             "$", $rowIn[2], " Each <br/> <br/>",
+                             "<input type=\"submit\" name=\"cartSubmit\" value=\"", $rowIn[4], "\"/> <br/> </th>",
                              "</form> </th>";
                     } else {
                         echo "OUT OF STOCK </th>";
                     }
                 }
                 // Record Selection in Cart
-                if(isset($_POST["cartSubmit"]) && $_POST["cartSubmit"] == $rowIn[3]) {
+                if(isset($_POST["cartSubmit"]) && $_POST["cartSubmit"] == $rowIn[4]) {
                     $pdo->query("INSERT INTO Cart (Quantity, Total, Product_ID)
-                                    VALUES (" . $_POST["quantSelect"] . ", " . ($_POST["quantSelect"] * $rowIn[1]) . ", " . $rowIn[0] . ");");
+                                    VALUES (" . $_POST["quantSelect"] . ", " . ($_POST["quantSelect"] * $rowIn[2]) . ", " . $rowIn[0] . ");");
     
                     // Calculate new Quantity in Stock
-                    $quantChange = $rowIn[2] - $_POST["quantSelect"];
+                    $quantChange = $rowIn[3] - $_POST["quantSelect"];
                     if ($quantChange < 0) {$quantChange = 0;} // Just in Case
     
                     // Subtract Selection from Quantity
@@ -217,22 +220,4 @@
         }
     }
 
-    // orderUp Function
-    // Transfer current Cart to Orders
-    /*function orderUp($pdo) {
-        try {
-            // Access Cart
-            $rs = $pdo->query("SELECT * FROM Cart;");              // Select 'Cart' from Maria
-            $rowsCart = $rs->fetchAll(PDO::FETCH_NUM);  // By Index
-            // Access Orders
-            $rs = $pdo->query("SELECT * FROM Orders;");              // Select 'Orders' from Maria
-            $rowsOrd = $rs->fetchAll(PDO::FETCH_NUM);   // By Index
-
-            // Loop Through Orders & WTF
-            // WTF
-        }
-        catch (Exception $e) {
-            echo "ORDER TRANSFER ERROR: ", $e->getMessage(), "\n";
-        }
-    }*/
 ?>

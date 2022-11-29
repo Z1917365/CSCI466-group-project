@@ -35,10 +35,6 @@
             }
 
             // Shopping Cart
-            /*if (isset($_POST["ordered"])) {
-                // Submit Cart as Orders, if routed from Checkout
-                orderUp($pdo);
-            }*/
             echo "<h3>Shopping Cart:</h3>",
                  "<table border=10 height=10% width=100%> <tr>"; 
             cartSelect($pdo);   // Display & Submit Cart Selections
@@ -53,13 +49,17 @@
             /* Pretty Source Code */ echo "\n\n";
 
             //Test: Draw Tables
-            $rsInventory = $pdo->query("SELECT * FROM Inventory;");              // Select 'Inventory' from Maria
-            $rows = $rsInventory->fetchAll(PDO::FETCH_ASSOC);
-            //TEST
+            $rs = $pdo->query("SELECT * FROM Inventory;");              // Select 'Inventory' from Maria
+            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             drawTable($rows);                                           // Draw Table
-            $rsUser = $pdo->query("SELECT * FROM User;");
-            $rows = $rsUser->fetchAll(PDO::FETCH_ASSOC);
+            //TEST
+            $rs = $pdo->query("SELECT * FROM User;");
+            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             drawTable($rows);                                           // Again
+            //TTTTEEEEEESSSSSSTTTTTT
+            $rs = $pdo->query("SELECT * FROM Orders;");
+            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
+            drawTable($rows);                                           // Again Again
 
             /* Pretty Source Code */ echo "\n\n";
 
