@@ -19,8 +19,8 @@ Translating Relations into SQL DDL: Isaiah Jones (Z1865213)
 Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 -
 - This code started gross, and has only grown grosser
-- https://students.cs.niu.edu/~z1838505/assignGroup_Starter.php
-    my class html/php repo, starter webpage to reset SQLs for testing
+- https://students.cs.niu.edu/~z1838505/assignGroup.php
+    MAIN
 - assignGroup.php:
     the actual webpage, "main"
 - assignGroup_Checkout.php:
