@@ -28,7 +28,7 @@ Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 - assignGroup_CustO.php: 
     display all Inventory & Orders to Customers
 - assignGroup_Emp.php:
-    employee review, soon to be alter
+    employee review & alter
 - assignGroup_lib.php:
     PHP function storage
 - assignGroup_Starter.php:
