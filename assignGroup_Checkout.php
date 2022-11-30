@@ -50,19 +50,19 @@
             // Customer Selection Confrimation
             echo "<u><b>Customer Selection:</u></b>";
             if (!(isset($_POST["custSelect"]))) { // Only if it hasn't happened yet
-                echo "<form method=\"POST\">",
-                     "<br/> <input type=\"submit\" name=\"custSelect\" value=\"CONFIRM IDENTITY\" /> <br/><br/>";
+                echo "<form method=\"POST\">";
 
                 // User Checkout Form
                 foreach($rowsUse as $rowUse) {
                     if ($rowUse[7] == 1) {
                         echo "<input type=\"radio\" name=\"user\" value=\"", $rowUse[0], "\" />", $rowUse[0], "<br/> ";
                     }
-
-                    /* Pretty Source Code */ echo "\n";
-
                 }
-                echo "</form> <br/>";
+                /* Pretty Source Code */ echo "\n";
+
+                echo "<u>PASSWORD:</u><nbsp> <input type=\"text\" name=\"custPass\"/> <br/>",
+                     "<br/> <input type=\"submit\" name=\"custSelect\" value=\"CONFIRM IDENTITY\" /> ",
+                     "</form> <br/><br/><br/>";
 
                 // New User Redirect
                 echo "<u><b>New User?</u></b>",
@@ -78,10 +78,12 @@
             // Only Confirm Orders if Selection made
             if (isset($_POST["custSelect"])) {
                 // Selected User Display
-                $user = NULL;   // Save Username for Orders
-                if (isset($_POST["user"])) {    // If User was even selected
+                $user = NULL;       // Save Username for Orders
+                $passBool = false;  // Print correct error message
+                if (isset($_POST["user"]) && !(empty($_POST["custPass"]))) {    // If User & Password were even selected
+                    $passBool = true;
                     foreach($rowsUse as $rowUse) {
-                        if ($_POST["user"] == $rowUse[0]) {
+                        if ($_POST["user"] == $rowUse[0] && strval($_POST["custPass"]) == $rowUse[1]) {
                             $user = $rowUse[0];
                             echo "<br/><br/>",
                                  "User: ", strval($rowUse[0]), "<br/>",
@@ -92,9 +94,9 @@
 
                         /* Pretty Source Code */ echo "\n";
                         
-                    }
+                    } 
                 } else {
-                    echo "<h4>PLEASE SELECT USER</h4>",
+                    echo "<h4>PLEASE SELECT USER & ENTER PASSWORD</h4>",
                          "<form action=\"https://students.cs.niu.edu/~z1838505/assignGroup_Checkout.php\" method=\"POST\">",
                          "<input type=\"submit\" name=\"checkout\" value=\"RETURN\" /> <br/>",
                          "</form> <br/>";
@@ -120,10 +122,22 @@
 
                     // Empty Cart
                     $pdo->query("DELETE FROM Cart;");
+
+                } elseif ($passBool) {
+                    echo "<h4>USERNAME / PASSWORD INCORRECT</h4>",
+                         "<form action=\"https://students.cs.niu.edu/~z1838505/assignGroup_Checkout.php\" method=\"POST\">",
+                         "<input type=\"submit\" name=\"checkout\" value=\"RETURN\" /> <br/>",
+                         "</form> <br/>";
                 }
             }
 
         ?>
+
+        <br/>
+        <h4><b>Return to Homepage?</b></h4>
+        <form action="https://students.cs.niu.edu/~z1838505/assignGroup.php" method="POST">
+            <input type="submit" name="go" value="RETURN" /> <br/>
+        </form> <br/>
 
     </body>
 </html>

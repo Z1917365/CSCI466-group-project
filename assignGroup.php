@@ -1,7 +1,7 @@
 <html>
     <head><title>CSCI 466: Group 5</title></head>
     <body>
-        <h1>100% Actual Dog Store, For Sure ~In Progress~</h1>
+        <h1>100% Actual Dog Store, For Sure</h1>
         <h2>CSCI 466 Group Project</h2>
         
         <?php
@@ -56,21 +56,6 @@
             // Draw Dogs
             echo "<h3>Dog Selection:</h3>";
             drawDogs($pdo);
-
-            /* Pretty Source Code */ echo "\n\n";
-
-            //Test: Draw Tables
-            $rs = $pdo->query("SELECT * FROM Inventory;");              // Select 'Inventory' from Maria
-            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-            drawTable($rows);                                           // Draw Table
-            //TEST
-            $rs = $pdo->query("SELECT * FROM User;");
-            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-            drawTable($rows);                                           // Again
-            //TTTTEEEEEESSSSSSTTTTTT
-            $rs = $pdo->query("SELECT * FROM Orders;");
-            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-            drawTable($rows);                                           // Again Again
 
             /* Pretty Source Code */ echo "\n\n";
 
