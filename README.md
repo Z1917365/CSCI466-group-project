@@ -18,15 +18,22 @@ Translating Relations into SQL DDL: Isaiah Jones (Z1865213)
 
 Implimentation via PHP / PDO : Joseph Katula (Z1838505)
 -
+- This code started gross, and has only grown grosser
 - https://students.cs.niu.edu/~z1838505/assignGroup_Starter.php
     my class html/php repo, starter webpage to reset SQLs for testing
 - assignGroup.php:
     the actual webpage, "main"
 - assignGroup_Checkout.php:
     Shopping Cart confirmation page
+- assignGroup_CustO.php: 
+    display all Inventory & Orders to Customers
 - assignGroup_Emp.php:
-    begining of employee section
+    employee review, soon to be alter
 - assignGroup_lib.php:
     PHP function storage
+- assignGroup_Starter.php:
+    unneeded webpage for Testing, tbh posted here accidentally
+- assignGroup_User.php:
+    new user entry page
 - secrets.php:
     my secret access to class MariaDB
