@@ -15,14 +15,6 @@
             include ("assignGroup_lib.php");
             include ("secrets.php");
 
-            // Button to Switch to Employee Site
-            echo "<table width=100%> <tr><th style=\"width:43%\"></th><th> <table border=25> <tr><th>",
-                 "<form action=\"assignGroup_Emp.php\" method=\"POST\">",
-                 "<input type=\"submit\" name=\"submitEmp\" value=\"EMPLOYEE PORTAL\"/> </form>",
-                 "</th></tr></table> </th></tr> </table>";
-
-            /* Pretty Source Code */ echo "\n\n";
-
             // Try to Access MariaDB
             try {
                 $dsn = "mysql:host=courses;dbname=z1838505";
@@ -33,6 +25,13 @@
             catch(PDOexception $e) {
                 echo "Connection to database failed: " . $e->getMessage();
             }
+
+            // Button to Switch to Employee Site
+            echo "<table width=100%> <tr><th style=\"width:43%\"></th><th> <table border=25> <tr><th>",
+                 "<img src=", PIC_DEFAULT, "/>",
+                 "<form action=\"assignGroup_Emp.php\" method=\"POST\">",
+                 "<input type=\"submit\" name=\"submitEmp\" value=\"EMPLOYEE PORTAL\"/> </form>",
+                 "</th></tr></table> </th></tr> </table>";
 
             // Shopping Cart
             echo "<h3>Shopping Cart:</h3>",

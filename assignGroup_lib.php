@@ -2,7 +2,6 @@
     // drawTable Function
     // Display Tables to assist in Testing
         // $rows = Entered Table Column Array
-        // $bord = Border width for table formatting
     function drawTable($rows) {
         try {
             echo "<table border=3 cellspacing=1> <tr>";

@@ -36,7 +36,7 @@ create table Cart
 create table Orders
 (
     Confirm_Num int (11) AUTO_INCREMENT PRIMARY KEY,
-    Is_processed BIT (1) DEFAULT 0,
+    Is_processed BIT (1) DEFAULT 1,
     Is_shipped BIT (1) DEFAULT 0,
     amountPaid varchar(50) NOT NULL,
     track_order varchar(50) NOT NULL, /* Username..? */
