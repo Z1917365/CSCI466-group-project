@@ -26,12 +26,18 @@
                 echo "Connection to database failed: " . $e->getMessage();
             }
 
-            // Button to Switch to Employee Site
-            echo "<table width=100%> <tr><th style=\"width:43%\"></th><th> <table border=25> <tr><th>",
-                 "<img src=", PIC_DEFAULT, "/>",
+            // Button to Switch to Employee Site OR Check Orders
+            echo "<table width=100% border=25> <tr><th>",
+                 "<img src=", PIC_DEFAULT, "/> <br/>",
                  "<form action=\"assignGroup_Emp.php\" method=\"POST\">",
-                 "<input type=\"submit\" name=\"submitEmp\" value=\"EMPLOYEE PORTAL\"/> </form>",
-                 "</th></tr></table> </th></tr> </table>";
+                 "<input type=\"submit\" name=\"submitEmp\" value=\"EMPLOYEE PORTAL\"/> </form> </th><th>",
+                 "<img src=", PIC_DEFAULT, "/> <br/>",
+                 "<form action=\"assignGroup_CustO.php\" method=\"POST\">",
+                 "<input type=\"submit\" name=\"checkOs\" value=\"FULL ORDERS LIST\"/> </form>",
+                 "</th></tr></table>";
+
+            // Resetting the Cart
+            if (isset($_POST["emptyCart"])) {$pdo->query("DELETE FROM Cart;");}
 
             // Shopping Cart
             echo "<h3>Shopping Cart:</h3>",
@@ -39,7 +45,13 @@
             cartSelect($pdo);   // Display & Submit Cart Selections
             echo "<th>";
             drawShop($pdo);     // Print Cart Contents
-            echo "</th> </tr> </table> <br/>";
+            echo "</th> </tr> </table> <br/>",
+                // Reset Cart Button
+                 "<table width=100%> <tr><th>",
+                 "<b>Reset Cart?</b> <nbsp><nbsp><nbsp><nbsp>",
+                 "<form method=\"POST\">",
+                 "<input type=\"submit\" name=\"emptyCart\" value=\"RESET\"/>",
+                 "</form> </th></tr><table>";
             
             // Draw Dogs
             echo "<h3>Dog Selection:</h3>";

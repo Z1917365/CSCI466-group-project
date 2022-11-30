@@ -4,7 +4,7 @@
         // $rows = Entered Table Column Array
     function drawTable($rows) {
         try {
-            echo "<table border=3 cellspacing=1> <tr>";
+            echo "<table width=100% border=3 cellspacing=1> <tr>";
         
             // Print Table Header
             foreach($rows[0] as $key => $item) {
@@ -201,13 +201,6 @@
                 if(isset($_POST["cartSubmit"]) && $_POST["cartSubmit"] == $rowIn[4]) {
                     $pdo->query("INSERT INTO Cart (Quantity, Total, Product_ID)
                                     VALUES (" . $_POST["quantSelect"] . ", " . ($_POST["quantSelect"] * $rowIn[2]) . ", " . $rowIn[0] . ");");
-    
-                    // Calculate new Quantity in Stock
-                    $quantChange = $rowIn[3] - $_POST["quantSelect"];
-                    if ($quantChange < 0) {$quantChange = 0;} // Just in Case
-    
-                    // Subtract Selection from Quantity
-                    $pdo->query("UPDATE Inventory SET QuantityinStock = " . strval($quantChange) . " WHERE Product_ID = " . strval($rowIn[0]) . ";");
                 }
             }
 

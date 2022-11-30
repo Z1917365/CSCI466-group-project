@@ -36,7 +36,7 @@ create table Cart
 create table Orders
 (
     Confirm_Num int (11) AUTO_INCREMENT PRIMARY KEY,
-    Is_processed BIT (1) DEFAULT 1,
+    Is_processed BIT (1) DEFAULT 0,
     Is_shipped BIT (1) DEFAULT 0,
     amountPaid varchar(50) NOT NULL,
     track_order varchar(50) NOT NULL, /* Username..? */
@@ -89,6 +89,13 @@ INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('GopackGo', 'GobearsGO',0, 1, 'Gopackgo@email.com', '456 Lucinda Dr, Dekalb, IL, 60115', '542', '8554525215453000', '10/27');
 INSERT INTO User (Username, Password, Iscust, Isemp, Email, Address, CCV, CC_Num, CC_Exp) VALUES ('GobearsGo', 'packerdog',0, 1, 'packerdog.com', '650 Normal Dr, Dekalb, IL, 60115', '490', '8554525243434000', '11/29');
 
+/* Insert into Orders */
+
+INSERT INTO Orders (amountPaid, track_order, add_note) VALUES ('300', 'BarkB@rk1', '2:6: ');
+INSERT INTO Orders (amountPaid, track_order, add_note) VALUES ('2000', 'ruffScream98', '1:16: Remember to Bathe and Brush');
+INSERT INTO Orders (amountPaid, track_order, add_note) VALUES ('2000', 'tinydogscream', '8:7: WTF Kill me 8 dogs?!?!');
+INSERT INTO Orders (amountPaid, track_order, add_note) VALUES ('10000', 'NeverGonna', '5:20: Rich Client Be Careful!');
+INSERT INTO Orders (amountPaid, track_order, add_note) VALUES ('3600', 'NeverGoingToINC', '3:4: Buisness Dogs');
 
 /* Insert into Pics */
 

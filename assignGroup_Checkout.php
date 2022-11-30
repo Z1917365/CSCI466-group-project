@@ -81,7 +81,7 @@
                 $user = NULL;   // Save Username for Orders
                 if (isset($_POST["user"])) {    // If User was even selected
                     foreach($rowsUse as $rowUse) {
-                        if ($_POST["user"] == $rowUse[0]) {    // If Username was selected
+                        if ($_POST["user"] == $rowUse[0]) {
                             $user = $rowUse[0];
                             echo "<br/><br/>",
                                  "User: ", strval($rowUse[0]), "<br/>",
@@ -109,7 +109,7 @@
 
                     foreach($rowsCart as $rowCart) {
                         // Build add_note
-                        $note = strval($rowCart[1]) . " : " . strval($rowCart[3] . " : ");
+                        $note = strval($rowCart[1]) . ":" . strval($rowCart[3] . ":");
                         // Record
                         $pdo->query("INSERT INTO Orders (amountPaid, track_order, add_note) 
                                                  VALUES (\"" . strval($rowCart[2]) . "\", \"" . strval($user) . "\", \"" . $note . "\");");
